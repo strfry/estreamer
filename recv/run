@@ -1,0 +1,5 @@
+#!/bin/sh
+
+PORT=$(cat port)
+
+exec gst-launch-1.0 udpsrc address=localhost port=$PORT ! 'application/x-rtp,payload=96,encoding-name=H264'! rtph264depay ! decodebin ! glimagesink
