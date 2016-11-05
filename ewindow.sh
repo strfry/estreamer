@@ -17,9 +17,10 @@ if [ -n "$SSH_CLIENT" ]; then
       echo "Connection Accepted"
       echo $REMOTE_IP > send/host
       svc -du send recv
-      dialog --msgbox "Starting call..." 20 100
+      #Doesnt work in SSH script dialog --msgbox "Starting call..." 20 100
+      sleep 10
       svc -d send recv
-      exit 42
+      exit 0
       ;;
     ACCEPT)
       echo Call to $REMOTE_IP accepted
@@ -54,6 +55,7 @@ case $(cat dialog.result) in
 		;;
 	Call*)
 		ssh 10.7.7.93 CALL
+		svc -d recv send
 		exit
 		;;
 	Exit*)
