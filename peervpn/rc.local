@@ -1,0 +1,4 @@
+ip tuntap add dev ewindow0 mode tap user ewindow
+ifconfig peervpn0 $(cat /home/ewindow/config/ip)/24
+
+exit 0
